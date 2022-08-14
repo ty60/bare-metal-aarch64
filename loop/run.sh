@@ -19,7 +19,10 @@ done
 make
 
 if [[ ${DEBUG_MODE} == true ]]; then
-    DEBUG_OPT="-gdb tcp::12345"
+    DEBUG_OPT="\
+        -gdb tcp::12345 \
+        -S
+    "
 
     if [[ -f cmd.gdb ]]; then
         tmux split-window -h "gdb-multiarch -q -x cmd.gdb"

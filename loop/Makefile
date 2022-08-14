@@ -1,10 +1,11 @@
 TGT := kernel
+OBJS := kernel.o
 
 MAKEFLAGS += --no-builtin-rules
 
 all: $(TGT)
 
-$(TGT): kernel.o
+$(TGT): $(OBJS)
 	aarch64-linux-gnu-ld -nostdlib -Tlinker.ld -o $@ $^
 
 %.o: %.c
@@ -12,3 +13,6 @@ $(TGT): kernel.o
 
 %.o: %.s
 	aarch64-linux-gnu-as -o $@ $<
+
+clean:
+	rm -f $(TGT) $(OBJS)
