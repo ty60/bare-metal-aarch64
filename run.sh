@@ -43,7 +43,7 @@ if [[ ${DEBUG_MODE} == true ]]; then
         -S
     "
 
-    if [[ -f cmd.gdb ]]; then
+    if [[ -f ${kernel_name}/cmd.gdb ]]; then
         tmux split-window -h "gdb-multiarch -q -x ${kernel_name}/cmd.gdb"
     else
         tmux split-window -h "gdb-multiarch -q"
